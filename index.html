@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dipam Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    header {
+      height: 60vh;
+      min-height: 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(120deg, rgba(59,130,246,0.15), rgba(168,85,247,0.15));
+      position: relative;
+      overflow: hidden;
+      padding: 40px 20px;
+    }
+
+    .hero-content { z-index: 2; }
+
+    .btn {
+      background: #38bdf8;
+      color: black;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-right: 8px;
+      font-size: 13px;
+    }
+
+    .btn-outline {
+      border: 1px solid #38bdf8;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #38bdf8;
+    }
+
+    header h1 {
+      font-size: 38px;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #94a3b8;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      border-left: 4px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    /* GLASS CARD */
+    .glass {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .skill-card h3 {
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #38bdf8;
+    }
+
+    .skill-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-icons img {
+      width: 32px;
+      height: 32px;
+      background: white;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    /* EDUCATION */
+    .education {
+      position: relative;
+      margin-top: 20px;
+      padding-left: 30px;
+      border-left: 2px solid rgba(56,189,248,0.4);
+    }
+
+    .edu-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .edu-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .edu-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    .edu-title {
+      font-size: 18px;
+      color: #38bdf8;
+      margin-bottom: 5px;
+    }
+
+    .edu-sub {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .edu-sub span {
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    .edu-marks {
+      font-size: 14px;
+      color: #cbd5f5;
+      line-height: 1.8;
+    }
+
+    .mark-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+    }
+
+    .mark-row:last-child { border-bottom: none; }
+
+    .ygpa-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 6px;
+      font-weight: 600;
+      color: #38bdf8;
+    }
+
+    .arrow { margin-right: 6px; }
+
+    /* CERTIFICATES */
+    .certificates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 18px;
+      transition: 0.3s;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .cert-title {
+      font-size: 16px;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .cert-org {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+
+    .cert-link a {
+      font-size: 13px;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .cert-link a:hover { text-decoration: underline; }
+
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card h3 { margin-bottom: 10px; }
+
+    .card p {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    .links a {
+      color: #38bdf8;
+      margin-right: 10px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .links a:hover { text-decoration: underline; }
+
+    /* CONTACT */
+    /* CONTACT */
+    .contact {
+      text-align: center;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      filter: invert(1);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero-content">
+      <h1>Dipam Ghosh</h1>
+      <p>B.Tech CSE Student | Backend & Full Stack Developer</p>
+      <div style="margin-top:20px;">
+        <a href="#projects" class="btn">View Work</a>
+      </div>
+    </div>
+  </header>
+
+  
+
+  <section>
+    <h2>About Me</h2>
+    <div class="glass">
+      <p style="font-size:15px; line-height:1.7; color:#cbd5f5;">
+        Hi, I'm <strong style="color:#38bdf8;">Dipam Ghosh</strong> 👋 — a passionate <strong>Backend & Full Stack Developer</strong> currently pursuing B.Tech in CSE.
+        <br><br>
+        I love building <strong>fast, scalable, and real-world web applications</strong> using modern technologies like Django, Node.js, and React.
+        My focus is on writing <strong>clean, efficient code</strong> and creating smooth user experiences.
+        <br><br>
+        🚀 Always learning, building, and improving.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="education">
+
+      <div class="edu-item">
+        <div class="edu-title">B.Tech - CSE</div>
+        <div class="edu-sub">College: Swami Vivekananda University</div>
+        <div class="edu-marks">
+          <div class="mark-row"><span>1st Semester</span><span>8 SGPA</span></div>
+          <div class="mark-row"><span>2nd Semester</span><span>8.61 SGPA</span></div>
+          <div class="ygpa-row"><span class="arrow">→</span><span>YGPA (1st Year): 8.33</span></div>
+          <div class="mark-row"><span>3rd Semester</span><span><span style="color:#22c55e; font-weight:bold;">9.08 SGPA ⭐</span></span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <h3>Backend & Core</h3>
+        <div class="skill-icons">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Frameworks</h3>
+        <div class="skill-icons">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg">
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Databases</h3>
+        <div class="skill-icons">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg">
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h3>Cloud & DevOps</h3>
+        <div class="skill-icons">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Certificates</h2>
+    <div class="certificates">
+
+      <div class="cert-card">
+        <div class="cert-title">Python Course</div>
+        <div class="cert-org">Issued by: GeeksforGeeks</div>
+        <div class="cert-link"><a href="#" target="_blank">View Certificate</a></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-title">Introduction to Data Analysis</div>
+        <div class="cert-org">Issued by: Simplilearn</div>
+        <div class="cert-link"><a href="#" target="_blank">View Certificate</a></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-title">Data Structures and Algorithms</div>
+        <div class="cert-org">Issued by: NPTEL (IIT Madras)</div>
+        <div class="cert-link"><a href="#" target="_blank">View Certificate</a></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 id="projects">Projects</h2>
+    <div class="projects">
+
+      <div class="card glass">
+        <h3>Project 1</h3>
+        <p>Modern website with clean UI.</p>
+        <div class="links">
+          <a href="#">Live</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card glass">
+        <h3>Project 2</h3>
+        <p>Responsive web app with smooth UX.</p>
+        <div class="links">
+          <a href="#">Live</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p style="display:flex; justify-content:center; align-items:center; gap:8px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" style="width:20px; filter:invert(1);">
+      <a href="mailto:dipamg13@gmail.com" style="color:#38bdf8; text-decoration:none;">dipamg13@gmail.com</a>
+    </p>
+    <div class="social-icons">
+      <a href="#" onclick="window.location.href='https://www.linkedin.com/in/dipam-ghosh-735415290/'; return false;">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+      </a>
+      <a href="https://x.com/dipampi2501k" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+      </a>
+      <a href="https://github.com/Dipam03" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Dipam. All rights reserved.
+  </footer>
+
+</body>
+</html>
