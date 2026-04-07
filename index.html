@@ -224,38 +224,58 @@
     }
 
     .cert-card {
+      position: relative;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 18px;
+      border-radius: 14px;
+      padding: 16px;
       transition: 0.3s;
+      overflow: hidden;
     }
 
     .cert-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+    }
+
+    .cert-top {
+      display:flex; align-items:center; gap:10px; margin-bottom:8px;
+    }
+
+    .cert-top img {
+      width:36px; height:36px; border-radius:8px; background:#fff; padding:4px;
     }
 
     .cert-title {
-      font-size: 16px;
-      color: #38bdf8;
-      margin-bottom: 6px;
+      font-size: 15px;
+      color: #e2e8f0;
+      font-weight:600;
     }
 
     .cert-org {
-      font-size: 13px;
+      font-size: 12px;
       color: #94a3b8;
-      margin-bottom: 10px;
+      margin: 6px 0 10px;
+    }
+
+    .cert-badge {
+      position:absolute; top:10px; right:10px;
+      font-size:11px; padding:4px 8px; border-radius:999px;
+      background: rgba(56,189,248,0.15);
+      border:1px solid rgba(56,189,248,0.4);
+      color:#38bdf8;
     }
 
     .cert-link a {
       font-size: 13px;
       color: #38bdf8;
       text-decoration: none;
+      border-bottom:1px dashed rgba(56,189,248,0.6);
+      padding-bottom:2px;
     }
 
-    .cert-link a:hover { text-decoration: underline; }
+    .cert-link a:hover { opacity:0.8; }
 
     /* PROJECTS */
     .projects {
@@ -412,20 +432,32 @@
     <div class="certificates">
 
       <div class="cert-card">
-        <div class="cert-title">Python Course</div>
-        <div class="cert-org">Issued by: GeeksforGeeks</div>
+        <div class="cert-badge">Core</div>
+        <div class="cert-top">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+          <div class="cert-title">Python Course</div>
+        </div>
+        <div class="cert-org">GeeksforGeeks</div>
         <div class="cert-link"><a href="#" target="_blank">View Certificate</a></div>
       </div>
 
       <div class="cert-card">
-        <div class="cert-title">Introduction to Data Analysis</div>
-        <div class="cert-org">Issued by: Simplilearn</div>
+        <div class="cert-badge">Analytics</div>
+        <div class="cert-top">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">
+          <div class="cert-title">Introduction to Data Analysis</div>
+        </div>
+        <div class="cert-org">Simplilearn</div>
         <div class="cert-link"><a href="#" target="_blank">View Certificate</a></div>
       </div>
 
       <div class="cert-card">
-        <div class="cert-title">Data Structures and Algorithms</div>
-        <div class="cert-org">Issued by: NPTEL (IIT Madras)</div>
+        <div class="cert-badge">IIT/NPTEL</div>
+        <div class="cert-top">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg">
+          <div class="cert-title">Data Structures & Algorithms</div>
+        </div>
+        <div class="cert-org">NPTEL (IIT Madras)</div>
         <div class="cert-link"><a href="#" target="_blank">View Certificate</a></div>
       </div>
 
